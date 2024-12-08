@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NextStep Mentor</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #1e90ff;
+            text-align: center;
+        }
+
+        #chat-output {
+            padding: 20px;
+            background-color: #fff;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #chat-form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #user-message {
+            padding: 0.8rem;
+            font-size: 1rem;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #submit-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: #1e90ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        #submit-btn:hover {
+            background-color: #00bcd4;
+        }
+
+        /* Modal Overlay Styles */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #recommendations-modal {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        #close-btn {
+            background: #f44336;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #close-btn:hover {
+            background: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>NextStep Mentor</h1> <!-- Platform logo -->
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Internships</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Find the Best Courses and Internships for Your Career</h2>
+            <p>Discover personalized courses and internships based on your skills and interests.</p>
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <!-- <section class="chatbot">
+        <div class="container">
+            <h2>Ask the NextStep Mentor Chatbot</h2>
+            <p>Get course and internship recommendations tailored to you. Enter your interests and skill level below.</p>
+            <div id="chatbot-response" style="margin-top: 20px; font-size: 1.2rem; color: #2c3e50;"></div>
+            <form id="course-form">
+                <label for="interest">Your Interest:</label>
+                <input 
+                    type="text" 
+                    id="interest" 
+                    name="interest" 
+                    placeholder="e.g., Python, Data Analysis" 
+                    required
+                >
+
+                <label for="level">Skill Level:</label>
+                <select id="level" name="level" required>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+
+                <button type="submit">Get Recommendations</button>
+            </form>
+            <div id="recommendations"></div>
+        </div>
+        <div id="chat-output"></div> 
+    </section> -->
+    <div class="containers">
+        <h1>Find Top Courses as per Your Skill</h1>
+        <div class="input-section">
+          <input type="text" id="skillInput" placeholder="Enter a skill (e.g., Python)">
+          <button id="getCoursesBtn">Get Courses</button>
+        </div>
+        <p id="errorMessage" class="hidden">Please Train the Model.</p>
+        <div id="loadingSpinner" class="hidden">Loading...</div>
+        <div id="courseContainer" class="hidden"></div>
+      </div>
+    <!-- Course Recommendations Section -->
+    <section class="recommendations">
+        <div class="container">
+            <h2>Featured Courses</h2>
+            <div class="card-container">
+                <!-- Course Card 1 -->
+                <div class="card">
+                    <img src="WebDevelopmentImage.jpeg" alt="Web Development">
+                    <h3>Web Development</h3>
+                    <p>Master front-end and back-end development with this course.</p>
+                    <a href="#">Learn More</a>
+                </div>
+                <!-- Course Card 2 -->
+                <div class="card">
+                    <img src="FUqHEVVUsAAbZb0.jpg" alt="Data Science">
+                    <h3>Data Science</h3>
+                    <p>Learn data analysis, machine learning, and AI concepts.</p>
+                    <a href="#">Learn More</a>
+                </div>
+                <!-- Course Card 3 -->
+                <div class="card">
+                    <img src="r.jpg" alt="Digital Marketing">
+                    <h3>Digital Marketing</h3>
+                    <p>Boost your skills in social media marketing and SEO.</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section class="modules">
+        <div class="container">
+            <h2>What NextStep Mentor Offers</h2>
+            <div class="module-container">
+                <div class="module" data-number="1">
+                    <h3>Unified Learning and Internship Platform</h3>
+                    <p>Seamlessly combine skill-building resources with internship opportunities.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+                <div class="module" data-number="2">
+                    <h3>Personalized Internship Matching</h3>
+                    <p>Get personalized internship suggestions powered by AI.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+                <div class="module" data-number="3">
+                    <h3>Verification of Achievements</h3>
+                    <p>Securely track your achievements using blockchain technology.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+                <div class="module" data-number="4">
+                    <h3>Core Subjects Tracker</h3>
+                    <p>Access curated questions for core subjects like OS, DBMS, and more.</p>
+                    <a href="#">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>NextStep Mentor</h4>
+                <p>Organized information for productivity and career success.</p>
+            </div>
+            <div class="footer-section">
+                <h4>ALGOLISTED</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contributors</a></li>
+                    <li><a href="#">Open Source</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>GENERAL</h4>
+                <ul>
+                    <li><a href="#">Privacy Policies</a></li>
+                    <li><a href="#">Data Protection</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>FOUNDER</h4>
+                <ul>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 NextStep Mentor. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextStep Mentor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">NextStep Mentor</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Courses</a></li>
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Internship</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h1>Find Top Courses as per Your Skill</h1>
+    <div class="input-section">
+      <input type="text" id="skillInput" placeholder="Enter a skill (e.g., Python)">
+      <button id="getCoursesBtn">Get Courses</button>
+    </div>
+    <p id="errorMessage" class="hidden">Please Train the Model.</p>
+    <div id="loadingSpinner" class="hidden">Loading...</div>
+    <div id="courseContainer" class="hidden"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html> -->
