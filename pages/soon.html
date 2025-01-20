@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - NextStep Mentor</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+            height: 100vh;
+            background: linear-gradient(270deg, #007bff, #0056b3);
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            animation: blink 1.5s step-start infinite;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #007bff;
+            background-color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>We Are Working On It</h1>
+        <p>We will go live super soon!</p>
+        <button class="button">Stay Tuned</button>
+    </div>
+</body>
+</html>
