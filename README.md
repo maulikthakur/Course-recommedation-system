@@ -12,3 +12,5 @@ Key Features:
 Our Vision:
 NextStep Mentor aims to be a one-stop solution for students, providing the tools, guidance, and opportunities needed to excel in the ever-evolving tech industry.
 
+This is basic form of NextStep Mentor which is created using simply HTML, CSS and Javascript
+
